@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>stevan.co.rs</title>
+<meta name="description" content="Things Stevan has built: a map quiz, a house planner and a game collection.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23233bd6'/%3E%3Ctext x='16' y='23' font-family='Arial,sans-serif' font-weight='700' font-size='19' text-anchor='middle' fill='white'%3Es%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a single column index of projects, each row a big name with its address and source link */
+:root {
+  --bg: #f4f5f8;
+  --surface: #ffffff;
+  --ink: #12151f;
+  --muted: #5d6478;
+  --line: #dcdfe8;
+  --accent: #233bd6;
+  --display: "Unbounded", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+  --body: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0e1016; --surface: #161a24; --ink: #eceef5; --muted: #9aa1b5; --line: #262b3a; --accent: #8b9cff;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0e1016; --surface: #161a24; --ink: #eceef5; --muted: #9aa1b5; --line: #262b3a; --accent: #8b9cff;
+  color-scheme: dark;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font: 400 1rem/1.55 var(--body);
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: clamp(48px, 10vw, 112px) 20px 48px; }
+
+header { display: grid; gap: 14px; margin-bottom: clamp(40px, 8vw, 72px); }
+.domain { font-family: var(--mono); font-size: .8rem; letter-spacing: .06em; color: var(--muted); }
+.domain b { color: var(--accent); font-weight: 500; }
+h1 {
+  font-family: var(--display); font-weight: 700; margin: 0;
+  font-size: clamp(2.6rem, 9vw, 5rem); line-height: .95; letter-spacing: -.04em; text-wrap: balance;
+}
+.lede { margin: 0; font-size: 1.1rem; color: var(--muted); max-width: 44ch; }
+
+.projects { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+.project { border-bottom: 1px solid var(--line); }
+.project > a {
+  display: grid; grid-template-columns: 72px 1fr auto; gap: 20px; align-items: center;
+  padding: 26px 8px; color: inherit; text-decoration: none; border-radius: 10px;
+  transition: background .15s;
+}
+.project > a:hover { background: var(--surface); }
+.project > a:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.glyph { width: 72px; height: 72px; border-radius: 14px; background: var(--surface); border: 1px solid var(--line); display: grid; place-items: center; }
+.glyph svg { width: 40px; height: 40px; }
+.glyph .s { stroke: var(--ink); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.glyph .f { fill: var(--accent); }
+.text { min-width: 0; display: grid; gap: 4px; }
+.name { font-family: var(--display); font-weight: 500; font-size: clamp(1.25rem, 3.4vw, 1.7rem); letter-spacing: -.02em; line-height: 1.1; }
+.desc { color: var(--muted); max-width: 52ch; }
+.url { font-family: var(--mono); font-size: .8rem; color: var(--accent); overflow-wrap: anywhere; }
+.arrow { font-family: var(--display); font-size: 1.4rem; color: var(--muted); transition: transform .15s, color .15s; }
+.project > a:hover .arrow { transform: translateX(4px); color: var(--accent); }
+.source { display: block; padding: 0 8px 22px calc(72px + 28px); margin-top: -12px; font-family: var(--mono); font-size: .75rem; }
+.source a { color: var(--muted); }
+.source a:hover { color: var(--ink); }
+
+footer { margin-top: 56px; display: flex; flex-wrap: wrap; gap: 8px 20px; font-family: var(--mono); font-size: .8rem; color: var(--muted); }
+footer a { color: inherit; }
+footer a:hover { color: var(--ink); }
+
+@media (max-width: 560px) {
+  .project > a { grid-template-columns: 52px 1fr; gap: 14px; padding: 20px 4px; }
+  .glyph { width: 52px; height: 52px; border-radius: 11px; }
+  .glyph svg { width: 30px; height: 30px; }
+  .arrow { display: none; }
+  .source { padding-left: calc(52px + 18px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .project > a, .arrow { transition: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="domain"><b>stevan</b>.co.rs</div>
+    <h1>Stevan</h1>
+    <p class="lede">Small things I've built and put online. Open one up and have a go.</p>
+  </header>
+
+  <ul class="projects">
+    <li class="project">
+      <a href="https://towndrop.stevan.co.rs/">
+        <span class="glyph" aria-hidden="true">
+          <svg viewBox="0 0 40 40"><circle class="s" cx="20" cy="20" r="15"/><path class="s" d="M5 20h30M20 5c-5 4-7 9-7 15s2 11 7 15M20 5c5 4 7 9 7 15s-2 11-7 15"/><circle class="f" cx="27" cy="13" r="4"/></svg>
+        </span>
+        <span class="text">
+          <span class="name">Town Drop</span>
+          <span class="desc">A map quiz. A town name appears and you click its country before the clock runs out. Share a seed to play the same five towns as a friend.</span>
+          <span class="url">towndrop.stevan.co.rs</span>
+        </span>
+        <span class="arrow" aria-hidden="true">→</span>
+      </a>
+      <span class="source"><a href="https://github.com/radovanovic-stevan/town-drop">Source on GitHub</a></span>
+    </li>
+    <li class="project">
+      <a href="https://realestate.stevan.co.rs/">
+        <span class="glyph" aria-hidden="true">
+          <svg viewBox="0 0 40 40"><path class="s" d="M6 34V12h28v22H6zM6 22h12M18 12v8M24 22v12M24 26h10"/><rect class="f" x="26" y="14" width="6" height="5" rx="1"/></svg>
+        </span>
+        <span class="text">
+          <span class="name">House Planner</span>
+          <span class="desc">Draw a single-story floor plan in 2D, then walk through it in 3D and place furniture.</span>
+          <span class="url">realestate.stevan.co.rs</span>
+        </span>
+        <span class="arrow" aria-hidden="true">→</span>
+      </a>
+      <span class="source"><a href="https://github.com/radovanovic-stevan/house-planner">Source on GitHub</a></span>
+    </li>
+    <li class="project">
+      <a href="https://collection.stevan.co.rs/">
+        <span class="glyph" aria-hidden="true">
+          <svg viewBox="0 0 40 40"><rect class="s" x="5" y="13" width="30" height="16" rx="8"/><path class="s" d="M13 18v6M10 21h6"/><circle class="f" cx="26" cy="19" r="2.2"/><circle class="f" cx="29.5" cy="23" r="2.2"/></svg>
+        </span>
+        <span class="text">
+          <span class="name">Game Collection</span>
+          <span class="desc">My physical game collection, with cover art, filters, a game of the month, yearly awards and a map of where each game was bought.</span>
+          <span class="url">collection.stevan.co.rs</span>
+        </span>
+        <span class="arrow" aria-hidden="true">→</span>
+      </a>
+      <span class="source"><a href="https://github.com/radovanovic-stevan/my-gaming-collection">Source on GitHub</a></span>
+    </li>
+  </ul>
+
+  <footer>
+    <a href="https://github.com/radovanovic-stevan">github.com/radovanovic-stevan</a>
+  </footer>
+</div>
+</body>
+</html>
