@@ -7,3 +7,5 @@ The landing page at [www.stevan.co.rs](https://www.stevan.co.rs), linking to:
 - [Game Collection](https://collection.stevan.co.rs) ([source](https://github.com/radovanovic-stevan/my-gaming-collection))
 - [Desingerica Soundboard](https://desinger.stevan.co.rs) ([source](https://github.com/radovanovic-stevan/desingerica-soundboard))
 - [Gramophone](https://gramophone.stevan.co.rs) ([source](https://github.com/radovanovic-stevan/mp3-gramophone))
+- [Caken](https://caken.stevan.co.rs) ([source](https://github.com/radovanovic-stevan/caken))
+- [Cookbook](https://cookbook.stevan.co.rs) ([source](https://github.com/radovanovic-stevan/cookbook))
