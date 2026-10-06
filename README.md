@@ -9,4 +9,4 @@ The landing page at [www.stevan.co.rs](https://www.stevan.co.rs), linking to:
 - [Gramophone](https://gramophone.stevan.co.rs) ([source](https://github.com/radovanovic-stevan/mp3-gramophone))
 - [Caken](https://caken.stevan.co.rs) ([source](https://github.com/radovanovic-stevan/caken))
 - [Cookbook](https://cookbook.stevan.co.rs) ([source](https://github.com/radovanovic-stevan/cookbook))
-- [Partizan Stats](https://radovanovic-stevan.github.io/partizan/) ([source](https://github.com/radovanovic-stevan/partizan))
+- [Partizan Stats](https://partizan.stevan.co.rs/) ([source](https://github.com/radovanovic-stevan/partizan))
